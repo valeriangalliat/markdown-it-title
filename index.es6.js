@@ -2,7 +2,7 @@ export default (md, level = 1) => {
   const originalHeadingOpen = md.renderer.rules.heading_open
 
   md.renderer.rules.heading_open = function (...args) {
-    const [ tokens, idx, _, env, self ] = args
+    const [ tokens, idx, , env, self ] = args
 
     if (level < 1 || tokens[idx].tag === `h${level}`) {
       env.title = tokens[idx + 1].children
