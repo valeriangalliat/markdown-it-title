@@ -2,7 +2,9 @@
   "name": "markdown-it-title",
   "version": "1.0.0",
   "description": "Extract title during markdown-it parsing.",
-  "keywords": ["markdown-it-plugin"],
+  "keywords": [
+    "markdown-it-plugin"
+  ],
   "homepage": "https://github.com/valeriangalliat/markdown-it-title",
   "license": {
     "type": "Unlicense",
