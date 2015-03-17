@@ -31,8 +31,5 @@
     "build": "babel index.es6.js -o index.js",
     "prepublish": "$npm_package_scripts_build",
     "test": "$npm_package_scripts_build && babel-node test.js"
-  },
-  "dependencies": {
-    "lodash.findindex": "^3.0.0"
   }
 }

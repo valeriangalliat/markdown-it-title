@@ -1,20 +1,26 @@
-import findIndex from 'lodash.findindex'
+export default (md, level = 1) => {
+  const originalHeadingOpen = md.renderer.rules.heading_open
 
-const title = (tokens, level = 1) => {
-  const isClosing = t => t.type === 'heading_close'
-  const isLevel = level > 0 ? t => t.tag === `h${level}` : () => true
-  const index = findIndex(tokens, t => isClosing(t) && isLevel(t))
+  md.renderer.rules.heading_open = function (...args) {
+    const [ tokens, idx, _, env, self ] = args
 
-  return index && tokens[index - 1].children
-    .reduce((acc, t) => acc + t.content, '')
-}
+    if (level < 1 || tokens[idx].tag === `h${level}`) {
+      env.title = tokens[idx + 1].children
+        .reduce((acc, t) => acc + t.content, '')
 
-export default (md, level) => {
-  const originalParse = md.parse
+      // Reset original rule.
+      if (originalHeadingOpen) {
+        md.renderer.rules.heading_open = originalHeadingOpen
+      } else {
+        delete md.renderer.rules.heading_open
+      }
+    }
 
-  md.parse = function (src, env) {
-    const tokens = originalParse.call(this, src, env)
-    env.title = title(tokens, level)
-    return tokens
+    // Execute original rule.
+    if (originalHeadingOpen) {
+      return originalHeadingOpen.apply(this, args)
+    } else {
+      return self.renderToken(...args)
+    }
   }
 }
