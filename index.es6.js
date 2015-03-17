@@ -1,7 +1,9 @@
+import findIndex from 'lodash.findindex'
+
 const title = (tokens, level = 1) => {
   const isClosing = t => t.type === 'heading_close'
   const isLevel = level > 0 ? t => t.tag === `h${level}` : () => true
-  const index = Array.findIndex(tokens, t => isClosing(t) && isLevel(t))
+  const index = findIndex(tokens, t => isClosing(t) && isLevel(t))
 
   return index && tokens[index - 1].children
     .reduce((acc, t) => acc + t.content, '')
