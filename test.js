@@ -2,22 +2,31 @@ import { equal } from 'assert'
 import md from 'markdown-it'
 import title from './'
 
-const env = {}
+const render = (engine, src) => {
+  const env = {}
+  engine.render(src, env)
+  return env
+}
 
-md({ typographer: true })
+const engine = md({ typographer: true })
   .use(title)
-  .render('## H2\n\n# Hello, *`world`!(c)*', env)
 
-equal(env.title, 'Hello, world!©')
+equal(
+  render(engine, '## H2\n\n# Hello, *`world`!(c)*').title,
+  'Hello, world!©'
+)
 
-md()
-  .use(title, 0)
-  .render('## H2\n\n# H1', env)
+equal(
+  render(engine, '## H2\n\n# Instance reuse').title,
+  'Instance reuse'
+)
 
-equal(env.title, 'H2')
+equal(
+  render(md().use(title, 0), '## H2\n\n# H1').title,
+  'H2'
+)
 
-md()
-  .use(title, 2)
-  .render('# H1\n\n## H2', env)
-
-equal(env.title, 'H2')
+equal(
+  render(md().use(title, 2), '# H1\n\n## H2').title,
+  'H2'
+)
