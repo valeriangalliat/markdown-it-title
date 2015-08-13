@@ -4,16 +4,9 @@ export default (md, level = 1) => {
   md.renderer.rules.heading_open = function (...args) {
     const [ tokens, idx, , env, self ] = args
 
-    if (level < 1 || tokens[idx].tag === `h${level}`) {
+    if (!env.title && (level < 1 || tokens[idx].tag === `h${level}`)) {
       env.title = tokens[idx + 1].children
         .reduce((acc, t) => acc + t.content, '')
-
-      // Reset original rule.
-      if (originalHeadingOpen) {
-        md.renderer.rules.heading_open = originalHeadingOpen
-      } else {
-        delete md.renderer.rules.heading_open
-      }
     }
 
     // Execute original rule.
