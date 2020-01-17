@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-title",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Extract title during markdown-it parsing.",
   "keywords": [
     "markdown-it-plugin"
