@@ -1,6 +1,6 @@
-import { equal } from 'assert'
-import md from 'markdown-it'
-import title from './'
+const { strictEqual: equal } = require('assert')
+const md = require('markdown-it')
+const title = require('./')
 
 const render = (engine, src) => {
   const env = {}
