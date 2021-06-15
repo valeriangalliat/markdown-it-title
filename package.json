@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-title",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Extract title during markdown-it parsing.",
   "keywords": [
     "markdown-it-plugin"
@@ -26,7 +26,7 @@
     "test": "npm run lint && node test.js"
   },
   "devDependencies": {
-    "markdown-it": "^10.0.0",
-    "standard": "^14.3.3"
+    "markdown-it": "^12.0.6",
+    "standard": "^16.0.3"
   }
 }

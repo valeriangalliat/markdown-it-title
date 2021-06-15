@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [4.0.0] - 2021-06-15
+* Add support for extracting excerpt text from leading paragraphs.
+
 ## [3.0.0] - 2020-03-29
 * Fix inline code support.
 * ES6 by default, remove build step.
