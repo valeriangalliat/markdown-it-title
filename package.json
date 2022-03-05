@@ -5,21 +5,14 @@
   "keywords": [
     "markdown-it-plugin"
   ],
-  "homepage": "https://github.com/valeriangalliat/markdown-it-title",
   "license": "Unlicense",
-  "author": {
-    "name": "Valérian Galliat",
-    "url": "http://val.codejam.info/"
-  },
+  "author": "Val (https://val.codejam.info)",
   "files": [
     "README.md",
     "UNLICENSE",
     "index.js"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/valeriangalliat/markdown-it-title.git"
-  },
+  "repository": "valeriangalliat/markdown-it-title",
   "scripts": {
     "lint": "standard index.js test.js",
     "prepublish": "npm test",
